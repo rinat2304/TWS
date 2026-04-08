@@ -27,7 +27,7 @@ Authorization: Bearer <YOUR_API_TOKEN>
 | Метод | URL | Описание
 
 | POST
-| /tasks
+| _/tasks_
 | Создает новую задачу
 |===
 
@@ -58,7 +58,7 @@ Content-Type: application/json
 ----
 
 === Получение задач
-GET /tasks — возвращает список всех задач:
+GET _/tasks_ — возвращает список всех задач:
 
 [source,http]
 ----
@@ -81,8 +81,8 @@ Authorization: Bearer YOUR_API_TOKEN
 
 == Быстрый старт
 1. Получите токен в личном кабинете *TaskCloud*.
-2. Создайте первую задачу через POST /tasks.
-3. Проверьте статус через GET /tasks.
+2. Создайте первую задачу через POST _/tasks_.
+3. Проверьте статус через GET _/tasks_.
 
 == FAQ
 
@@ -90,4 +90,4 @@ Authorization: Bearer YOUR_API_TOKEN
 A: Да, поле `due_date` необязательно.
 
 *Q: Как удалить задачу?* +
-A: Используйте DELETE /tasks/{id} с вашим токеном.
+A: Используйте DELETE _/tasks/_{id} с вашим токеном.
