@@ -1,0 +1,92 @@
+= TaskCloud API Documentation
+John Doe <john.doe@example.com>
+:toc:
+:toclevels: 3
+:sectnums:
+
+== Введение
+TaskCloud API позволяет создавать, управлять и отслеживать задачи в облаке.  
+Документация включает примеры запросов и ответов, а также советы по устранению ошибок.
+
+== Аутентификация
+Все запросы требуют токен API, который нужно передавать в заголовке:
+
+[source,json]
+----
+Authorization: Bearer <YOUR_API_TOKEN>
+----
+
+*Важно:* Не публикуйте токен в открытых репозиториях.
+
+== Эндпоинты
+
+=== Создание задачи
+[cols="1,1,2", options="header"]
+|===
+| Метод | URL | Описание
+
+| POST
+| /tasks
+| Создает новую задачу
+|===
+
+Пример запроса:
+
+[source,http]
+----
+POST /tasks HTTP/1.1
+Host: api.taskcloud.com
+Authorization: Bearer YOUR_API_TOKEN
+Content-Type: application/json
+
+{
+  "title": "Сделать отчёт",
+  "due_date": "2026-04-10"
+}
+----
+
+Пример ответа:
+
+[source,json]
+----
+{
+  "id": "12345",
+  "title": "Сделать отчёт",
+  "status": "pending"
+}
+----
+
+=== Получение задач
+GET /tasks — возвращает список всех задач:
+
+[source,http]
+----
+GET /tasks HTTP/1.1
+Host: api.taskcloud.com
+Authorization: Bearer YOUR_API_TOKEN
+----
+
+== Ошибки
+
+[NOTE]
+====
+Если API возвращает `401 Unauthorized`, проверьте токен.
+====
+
+[WARNING]
+====
+Ошибка `400 Bad Request` возникает, если поля отсутствуют или имеют неверный формат.
+====
+
+== Быстрый старт
+1. Получите токен в личном кабинете TaskCloud.
+2. Создайте первую задачу через POST /tasks.
+3. Проверьте статус через GET /tasks.
+
+== FAQ
+
+.Q: Можно ли создавать задачи без даты?
+A: Да, поле `due_date` необязательно.
+
+.Q: Как удалить задачу?
+A: Используйте DELETE /tasks/{id} с вашим токеном.
