@@ -1,0 +1,213 @@
+= Инструкция "Настройка Python для новичков"
+
+== 1. Введение
+*Python* — это популярный язык программирования, который используется для веб-разработки, анализа данных, автоматизации и игр.
+
+=== С чем поможет инструкция
+* Запуск *Python-скриптов*
+* Настройка *IDE* или текстового редактора
+* Установка необходимых пакетов
+
+== 2. Установка Python
+
+=== Скачивание с официального сайта
+Перейдите на https://www.python.org/downloads/ и скачайте последнюю версию.
+
+=== Пошаговая установка на Windows
+1. Запустите установщик `.exe`.
+2. Обязательно отметьте галочку "Add Python to PATH".
+3. Нажмите "Install Now" и дождитесь завершения установки.
+
+=== Пошаговая установка на macOS/Linux
+* macOS (через *Homebrew*):
+
+[source,bash]
+----
+brew install python
+----
+
+* Linux (*Ubuntu*):
+
+[source,bash]
+----
+sudo apt update
+sudo apt install python3 python3-venv python3-pip
+----
+
+=== Проверка установки
+[source,bash]
+----
+python --version   // Windows
+python3 --version  // macOS/Linux
+----
+
+== 3. Проверка установленного Python
+
+=== Проверка версии на Windows
+Откройте командную строку (`Win+R`) и введите:
+
+[source,bash]
+----
+python --version
+py --version
+----
+
+=== Проверка версии на macOS/Linux
+Откройте терминал (macOS — `Command + Пробел` и введите "*Терминал*", Linux — `CTRL + Alt + T`) и введите:
+
+[source,bash]
+----
+python3 --version
+----
+
+=== Если Python не установлен
+Переходите к разделу <<2.Установка Python>>.
+
+== 4. Установка и настройка текстового редактора / IDE
+
+=== Выбор редактора
+* *VS Code* — легкая и популярная IDE для новичков
+* *PyCharm Community Edition* — более функциональная IDE для Python
+
+=== Настройка VS Code для Python
+
+==== Установка расширения Python
+1. Откройте *VS Code*.
+2. Перейдите в *Extensions* (`Ctrl + Shift + X`).
+3. Найдите *Python* и нажмите *Install*.
+
+==== Выбор интерпретатора Python
+1. Откройте командную палитру (`Ctrl + Shift + P`).
+2. Выберите `Python: Select Interpreter`.
+3. Выберите установленный Python.
+
+== 5. Создание и активация виртуального окружения
+
+=== Зачем нужно виртуальное окружение
+Виртуальное окружение позволяет изолировать зависимости проекта и избегать конфликтов между пакетами.
+
+=== Создание окружения
+[source,bash]
+----
+python -m venv myenv   // Windows
+python3 -m venv myenv  // macOS/Linux
+----
+
+=== Активация и деактивация окружения
+* Windows:
+[source,bash]
+----
+myenv\Scripts\activate
+----
+
+* macOS/Linux:
+[source,bash]
+----
+source myenv/bin/activate
+----
+
+* Деактивация:
+[source,bash]
+----
+deactivate
+----
+
+== 6. Установка необходимых пакетов
+
+=== Использование *pip* для установки пакетов
+[source,bash]
+----
+pip install requests
+----
+
+=== Работа с *requirements.txt*
+Создайте файл `requirements.txt` с нужными пакетами:
+----
+requests==2.31.0
+numpy==1.26.0
+----
+Установите все пакеты одной командой:
+
+[source,bash]
+----
+pip install -r requirements.txt
+----
+
+== 7. Запуск первой программы
+
+=== Пример “Hello, Python!”
+Создайте файл `hello.py`:
+
+[source,python]
+----
+print("Hello, Python!")
+----
+
+=== Запуск скрипта через терминал или IDE
+[source,bash]
+----
+python hello.py   // Windows
+python3 hello.py  // macOS/Linux
+----
+Вы должны увидеть:
+----
+Hello, Python!
+----
+
+== 8. Советы и устранение проблем (Troubleshooting)
+
+=== Проверка добавления *Python* в *PATH* через командную строку
+  
+. Откройте командную строку:
+* Windows: нажмите `Win + R`, введите `cmd` и нажмите *Enter*
+* macOS/Linux: откройте Terminal
+
+. Введите команду:
+[source,bash]
+----
+python --version
+----
+
+Для macOS/Linux также можно использовать:
+[source,bash]
+----
+python3 --version
+----
+
+==== Результат проверки
+
+Если Python добавлен в PATH, вы увидите установленную версию:
+----
+Python 3.x.x
+----
+NOTE: Это означает, что Python установлен и доступен из командной строки.
+
+Если появляется ошибка, например:
+----
+'python' is not recognized as an internal or external command
+----
+
+или:
+
+----
+command not found
+----
+
+NOTE: Это означает, что Python не добавлен в PATH или не установлен.
+
+=== Команда python не работает
+* Проверьте, добавлен ли *Python* в *PATH*
+* Используйте *python3* вместо *python* на macOS/Linux
+
+=== Обновление pip
+
+После установки Python обновите *pip*, чтобы избежать проблем с установкой пакетов.
+
+[source,bash]
+----
+python -m pip install --upgrade pip
+----
+
+=== Ресурсы для помощи
+* https://docs.python.org/3/ — официальная документация Python
+* https://stackoverflow.com/questions/tagged/python — Stack Overflow
